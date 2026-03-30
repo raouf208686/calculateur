@@ -15,6 +15,7 @@
         .baraka-font { font-family: 'Reem Kufi', sans-serif; }
         .shake { animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both; }
         @keyframes shake { 10%, 90% { transform: translate3d(-1px, 0, 0); } 20%, 80% { transform: translate3d(2px, 0, 0); } 30%, 50%, 70% { transform: translate3d(-4px, 0, 0); } 40%, 60% { transform: translate3d(4px, 0, 0); } }
+        .info-pop { font-size: 10px; cursor: help; border: 1px solid #ccc; border-radius: 50%; width: 14px; height: 14px; display: inline-flex; items-center; justify-content: center; margin-left: 5px; opacity: 0.6; }
     </style>
 </head>
 <body class="bg-slate-50 min-h-screen flex items-center justify-center p-4" id="mainBody">
@@ -28,13 +29,9 @@
         <div class="space-y-4">
             <input type="email" id="userEmail" placeholder="Votre Email" class="w-full p-4 rounded-2xl bg-slate-100 border-2 border-transparent focus:border-amber-500 outline-none font-bold text-slate-700">
             <input type="password" id="userPass" placeholder="Mot de passe" class="w-full p-4 rounded-2xl bg-slate-100 border-2 border-transparent focus:border-amber-500 outline-none font-bold text-slate-700">
-            
-            <button onclick="checkAccess()" class="w-full py-4 bg-slate-900 text-white rounded-2xl font-black shadow-lg hover:bg-slate-800 transition-all border-b-4 border-amber-600 uppercase text-xs">
-                SE CONNECTER / الدخول 🚀
-            </button>
+            <button onclick="checkAccess()" class="w-full py-4 bg-slate-900 text-white rounded-2xl font-black shadow-lg hover:bg-slate-800 transition-all border-b-4 border-amber-600 uppercase text-xs">SE CONNECTER / الدخول 🚀</button>
         </div>
-        
-        <p id="errorMsg" class="mt-4 text-red-500 text-[10px] font-bold hidden uppercase">Accès refusé. Vérifiez vos codes.</p>
+        <p id="errorMsg" class="mt-4 text-red-500 text-[10px] font-bold hidden uppercase italic">Accès refusé. Vérifiez vos codes.</p>
     </div>
 
     <div id="mainApp" class="hidden-content w-full max-w-5xl mx-auto py-10 px-4">
@@ -47,26 +44,32 @@
             <div class="bg-white rounded-[35px] shadow-xl p-8 border border-slate-100">
                 <div class="space-y-6">
                     <div>
-                        <label class="text-[10px] font-black uppercase text-slate-400 block mb-2">Prix d'achat / الشراء</label>
+                        <label class="text-[10px] font-black uppercase text-slate-400 block mb-2">Prix d'achat / الشراء <span class="info-pop" title="Saisissez le prix d'achat fournisseur">i</span></label>
                         <input type="number" id="prixAchat" placeholder="0 DA" class="w-full p-4 bg-slate-50 rounded-2xl border-2 border-transparent focus:border-amber-500 outline-none font-bold text-xl">
                     </div>
                     <div class="grid grid-cols-2 gap-4">
                         <div>
-                            <label class="text-[10px] font-black uppercase text-slate-400 block mb-2">Ads / فيسبوك</label>
+                            <label class="text-[10px] font-black uppercase text-slate-400 block mb-2">Ads / فيسبوك <span class="info-pop" title="Coût de la pub par vente (CPA)">i</span></label>
                             <input type="number" id="ads" placeholder="0" class="w-full p-4 bg-slate-50 rounded-2xl border-2 border-transparent focus:border-amber-500 outline-none font-bold">
                         </div>
                         <div>
-                            <label class="text-[10px] font-black uppercase text-slate-400 block mb-2">Pack / تغليف</label>
+                            <label class="text-[10px] font-black uppercase text-slate-400 block mb-2">Pack / تغليف <span class="info-pop" title="Sachet, carton et scotch">i</span></label>
                             <input type="number" id="emb" placeholder="0" class="w-full p-4 bg-slate-50 rounded-2xl border-2 border-transparent focus:border-amber-500 outline-none font-bold">
                         </div>
                     </div>
                     <button onclick="analyserPrix()" class="w-full py-5 bg-slate-900 text-white font-black rounded-2xl shadow-lg border-b-4 border-amber-600 uppercase text-xs">Calculer / أحسب 🔥</button>
                 </div>
 
-                <div id="resultArea" class="hidden mt-8">
+                <div id="resultArea" class="hidden mt-8 space-y-4">
                     <div class="p-6 bg-emerald-50 rounded-3xl border-4 border-emerald-500 text-center">
                         <p class="text-[10px] font-black text-emerald-800 uppercase mb-1">Prix de vente / السومة</p>
                         <h2 id="prixFinal" class="text-emerald-600 text-6xl font-black italic">-- DA</h2>
+                        <div class="mt-4 p-3 bg-white/50 rounded-xl border border-dashed border-emerald-200">
+                            <p class="text-[10px] text-emerald-900 font-bold uppercase italic">⚠️ Le prix ne contient pas la livraison / السعر لا يشمل التوصيل</p>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <p class="baraka-font text-2xl text-slate-900 italic">ربي يباركلك 🤲</p>
                     </div>
                 </div>
             </div>
@@ -75,12 +78,12 @@
                 <h3 class="baraka-font text-3xl text-amber-500 mb-6">قوانين التجارة 👑</h3>
                 <div class="space-y-6 text-[12px]">
                     <div class="border-b border-amber-500/20 pb-4">
-                        <p class="text-amber-500 font-bold mb-1 italic">Marge de Sécurité</p>
-                        <p class="opacity-70 italic text-[11px]">Le retour peut atteindre 25%. Ne négligez pas votre marge !</p>
+                        <p class="text-amber-500 font-bold mb-1 italic">Marge de Sécurité / هامش الربح</p>
+                        <p class="opacity-70 italic text-[11px]">Le retour peut atteindre 25%. Ne négligez pas votre marge ! / الروتور يلحق 25%، احذر !</p>
                     </div>
                     <div class="border-b border-amber-500/20 pb-4">
-                        <p class="text-amber-500 font-bold mb-1 italic">Prix Psychologique</p>
-                        <p class="opacity-70 italic text-[11px]">Les prix en 00 ou 50 (ex: 2950 DA) vendent mieux.</p>
+                        <p class="text-amber-500 font-bold mb-1 italic">Prix Psychologique / السعر النفسي</p>
+                        <p class="opacity-70 italic text-[11px]">Les prix en 00 ou 50 (ex: 2950 DA) vendent mieux. / البيع يكون أفضل بالأسعار المنتهية بـ 00 أو 50.</p>
                     </div>
                 </div>
             </div>
@@ -88,10 +91,8 @@
     </div>
 
     <script>
-        // --- GESTION DES CLIENTS ---
         const USERS = [
             { email: "amine@dz.com", pass: "AMINE2026" },
-            { email: "vendeur@elite.dz", pass: "ELITE77" },
             { email: "test@test.com", pass: "1234" }
         ];
 
@@ -102,7 +103,6 @@
             const login = document.getElementById('loginScreen');
 
             const user = USERS.find(u => u.email === email && u.pass === pass);
-
             if (user) {
                 login.classList.add('hidden');
                 document.getElementById('mainApp').classList.remove('hidden-content');
@@ -119,13 +119,10 @@
             const achat = parseFloat(document.getElementById('prixAchat').value) || 0;
             const ads = parseFloat(document.getElementById('ads').value) || 0;
             const emb = parseFloat(document.getElementById('emb').value) || 0;
-
             if(achat <= 0) return;
-
             let marge = achat < 1500 ? 950 : (achat < 5000 ? achat * 0.40 : Math.max(2000, achat * 0.25));
             const totalCosts = achat + ads + emb;
             const finalPrice = Math.ceil((totalCosts + marge) / 50) * 50;
-
             document.getElementById('resultArea').classList.remove('hidden');
             document.getElementById('prixFinal').innerText = finalPrice + " DA";
         }
