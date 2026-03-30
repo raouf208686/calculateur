@@ -133,30 +133,28 @@
 
     <script>
         // --- SECURISE TES CLIENTS ICI ---
-       const USERS = [
-    { email: "client01@elite-dz.com", pass: "DZ-PRICING-01" },
-    { email: "client02@elite-dz.com", pass: "DZ-PRICING-02" },
-    { email: "client03@elite-dz.com", pass: "DZ-PRICING-03" },
-    { email: "client04@elite-dz.com", pass: "DZ-PRICING-04" },
-    { email: "client05@elite-dz.com", pass: "DZ-PRICING-05" },
-    { email: "client06@elite-dz.com", pass: "DZ-PRICING-06" },
-    { email: "client07@elite-dz.com", pass: "DZ-PRICING-07" },
-    { email: "client08@elite-dz.com", pass: "DZ-PRICING-08" },
-    { email: "client09@elite-dz.com", pass: "DZ-PRICING-09" },
-    { email: "client10@elite-dz.com", pass: "DZ-PRICING-10" },
-    { email: "client11@elite-dz.com", pass: "DZ-PRICING-11" },
-    { email: "client12@elite-dz.com", pass: "DZ-PRICING-12" },
-    { email: "client13@elite-dz.com", pass: "DZ-PRICING-13" },
-    { email: "client14@elite-dz.com", pass: "DZ-PRICING-14" },
-    { email: "client15@elite-dz.com", pass: "DZ-PRICING-15" },
-    { email: "client16@elite-dz.com", pass: "DZ-PRICING-16" },
-    { email: "client17@elite-dz.com", pass: "DZ-PRICING-17" },
-    { email: "client18@elite-dz.com", pass: "DZ-PRICING-18" },
-    { email: "client19@elite-dz.com", pass: "DZ-PRICING-19" },
-    { email: "client20@elite-dz.com", pass: "DZ-PRICING-20" }
+     const USERS = [
+    { email: "vip01@elite.com", pass: "Pricing01" },
+    { email: "vip02@elite.com", pass: "Pricing02" },
+    { email: "vip03@elite.com", pass: "Pricing03" },
+    { email: "vip04@elite.com", pass: "Pricing04" },
+    { email: "vip05@elite.com", pass: "Pricing05" },
+    { email: "vip06@elite.com", pass: "Pricing06" },
+    { email: "vip07@elite.com", pass: "Pricing07" },
+    { email: "vip08@elite.com", pass: "Pricing08" },
+    { email: "vip09@elite.com", pass: "Pricing09" },
+    { email: "vip10@elite.com", pass: "Pricing10" },
+    { email: "vip11@elite.com", pass: "Pricing11" },
+    { email: "vip12@elite.com", pass: "Pricing12" },
+    { email: "vip13@elite.com", pass: "Pricing13" },
+    { email: "vip14@elite.com", pass: "Pricing14" },
+    { email: "vip15@elite.com", pass: "Pricing15" },
+    { email: "vip16@elite.com", pass: "Pricing16" },
+    { email: "vip17@elite.com", pass: "Pricing17" },
+    { email: "vip18@elite.com", pass: "Pricing18" },
+    { email: "vip19@elite.com", pass: "Pricing19" },
+    { email: "vip20@elite.com", pass: "Pricing20" }
 ];
-            { email: "test@test.com", pass: "1234" }
-        ];
 
         function checkAccess() {
             const email = document.getElementById('userEmail').value.toLowerCase().trim();
