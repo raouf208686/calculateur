@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculateur Pro | Air Sea Business</title>
+    <title>Pricing Elite Strategy | Accès</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Reem+Kufi:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <style>
         :root { --primary: #0f172a; --accent: #d4af37; }
         body { font-family: 'Plus Jakarta Sans', sans-serif; background: #f8fafc; }
-        .login-card { background: white; border-radius: 35px; box-shadow: 0 25px 60px rgba(15, 23, 42, 0.15); border: 2px solid var(--accent); }
+        .login-card { background: white; border-radius: 30px; box-shadow: 0 20px 50px rgba(0,0,0,0.1); border: 2px solid var(--accent); }
         .hidden-content { display: none; }
         .baraka-font { font-family: 'Reem Kufi', sans-serif; }
         .shake { animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both; }
@@ -21,111 +21,97 @@
 
     <div id="loginScreen" class="w-full max-w-md login-card p-10 text-center">
         <div class="mb-8">
-            <div class="w-16 h-16 bg-slate-900 rounded-2xl flex items-center justify-center mx-auto mb-4 border-b-4 border-amber-500">
-                <span class="text-amber-500 text-3xl font-bold">AS</span>
-            </div>
-            <h1 class="baraka-font text-4xl text-slate-900">Espace Vendeur</h1>
-            <p class="text-[10px] font-black uppercase text-amber-600 tracking-widest mt-2">Air Sea Business Strategy 👑</p>
+            <h1 class="baraka-font text-4xl text-slate-900 mb-2">Espace Premium</h1>
+            <p class="text-[10px] font-black uppercase text-amber-600 tracking-widest">Pricing Elite Strategy 👑</p>
         </div>
         
-        <div class="space-y-4 text-left">
-            <div>
-                <label class="text-[10px] font-bold text-slate-400 uppercase ml-2 mb-1 block">Email Client</label>
-                <input type="email" id="userEmail" placeholder="nom@exemple.com" class="w-full p-4 rounded-2xl bg-slate-100 border-2 border-transparent focus:border-amber-500 outline-none font-bold text-slate-700 transition-all">
-            </div>
-            <div>
-                <label class="text-[10px] font-bold text-slate-400 uppercase ml-2 mb-1 block">Mot de passe</label>
-                <input type="password" id="userPass" placeholder="••••••••" class="w-full p-4 rounded-2xl bg-slate-100 border-2 border-transparent focus:border-amber-500 outline-none font-bold text-slate-700 transition-all">
-            </div>
+        <div class="space-y-4">
+            <input type="email" id="userEmail" placeholder="Votre Email" class="w-full p-4 rounded-2xl bg-slate-100 border-2 border-transparent focus:border-amber-500 outline-none font-bold text-slate-700">
+            <input type="password" id="userPass" placeholder="Mot de passe" class="w-full p-4 rounded-2xl bg-slate-100 border-2 border-transparent focus:border-amber-500 outline-none font-bold text-slate-700">
             
-            <button onclick="checkAccess()" class="w-full py-5 bg-slate-900 text-white rounded-2xl font-black shadow-xl hover:bg-slate-800 transition-all border-b-4 border-amber-600 uppercase text-xs tracking-widest mt-4">
-                DÉVERROUILLER L'ACCÈS 🚀
+            <button onclick="checkAccess()" class="w-full py-4 bg-slate-900 text-white rounded-2xl font-black shadow-lg hover:bg-slate-800 transition-all border-b-4 border-amber-600 uppercase text-xs">
+                SE CONNECTER / الدخول 🚀
             </button>
         </div>
         
-        <p id="errorMsg" class="mt-6 text-red-500 text-[11px] font-bold hidden italic uppercase">Accès refusé. Contactez Air Sea Travel.</p>
+        <p id="errorMsg" class="mt-4 text-red-500 text-[10px] font-bold hidden uppercase">Accès refusé. Vérifiez vos codes.</p>
     </div>
 
     <div id="mainApp" class="hidden-content w-full max-w-5xl mx-auto py-10 px-4">
-        <header class="bg-slate-900 rounded-[45px] p-10 text-center text-white border-b-8 border-amber-500 shadow-2xl mb-12 relative overflow-hidden">
-            <div class="relative z-10">
-                <h2 class="baraka-font text-5xl mb-2">مرحبا بك يا التاجر</h2>
-                <p id="welcomeUser" class="text-amber-500 font-bold uppercase tracking-widest text-[12px] italic"></p>
-            </div>
+        <header class="bg-slate-900 rounded-[40px] p-10 text-center text-white border-b-4 border-amber-500 shadow-2xl mb-10">
+            <h2 class="baraka-font text-5xl mb-1">مرحبا بك يا التاجر</h2>
+            <p class="text-[10px] font-bold opacity-60 uppercase tracking-[3px]">Expertise en Pricing Algérie</p>
         </header>
 
-        <div class="grid lg:grid-cols-2 gap-10">
-            <div class="bg-white rounded-[40px] shadow-2xl p-10 border border-slate-100">
-                <div class="space-y-8">
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="bg-white rounded-[35px] shadow-xl p-8 border border-slate-100">
+                <div class="space-y-6">
                     <div>
-                        <label class="text-[11px] font-black uppercase text-slate-400 flex justify-between mb-3"><span>Prix d'achat</span><span>الشراء</span></label>
-                        <input type="number" id="prixAchat" placeholder="0 DA" class="w-full p-5 bg-slate-50 rounded-2xl border-2 border-transparent focus:border-amber-500 outline-none font-black text-2xl text-slate-800 shadow-inner">
+                        <label class="text-[10px] font-black uppercase text-slate-400 block mb-2">Prix d'achat / الشراء</label>
+                        <input type="number" id="prixAchat" placeholder="0 DA" class="w-full p-4 bg-slate-50 rounded-2xl border-2 border-transparent focus:border-amber-500 outline-none font-bold text-xl">
                     </div>
-                    <div class="grid grid-cols-2 gap-6">
+                    <div class="grid grid-cols-2 gap-4">
                         <div>
-                            <label class="text-[11px] font-black uppercase text-slate-400 mb-3 block italic">Publicité Ads</label>
-                            <input type="number" id="ads" placeholder="0" class="w-full p-5 bg-slate-50 rounded-2xl border-2 border-transparent focus:border-amber-500 outline-none font-bold text-slate-700">
+                            <label class="text-[10px] font-black uppercase text-slate-400 block mb-2">Ads / فيسبوك</label>
+                            <input type="number" id="ads" placeholder="0" class="w-full p-4 bg-slate-50 rounded-2xl border-2 border-transparent focus:border-amber-500 outline-none font-bold">
                         </div>
                         <div>
-                            <label class="text-[11px] font-black uppercase text-slate-400 mb-3 block italic">Pack & Livraison</label>
-                            <input type="number" id="emb" placeholder="0" class="w-full p-5 bg-slate-50 rounded-2xl border-2 border-transparent focus:border-amber-500 outline-none font-bold text-slate-700">
+                            <label class="text-[10px] font-black uppercase text-slate-400 block mb-2">Pack / تغليف</label>
+                            <input type="number" id="emb" placeholder="0" class="w-full p-4 bg-slate-50 rounded-2xl border-2 border-transparent focus:border-amber-500 outline-none font-bold">
                         </div>
                     </div>
-                    <button onclick="analyserPrix()" class="w-full py-6 bg-slate-900 text-white font-black rounded-2xl shadow-2xl border-b-4 border-amber-600 uppercase text-sm tracking-widest hover:scale-[1.02] active:scale-95 transition-all">Lancer l'analyse 💎</button>
+                    <button onclick="analyserPrix()" class="w-full py-5 bg-slate-900 text-white font-black rounded-2xl shadow-lg border-b-4 border-amber-600 uppercase text-xs">Calculer / أحسب 🔥</button>
                 </div>
 
-                <div id="resultArea" class="hidden mt-10 space-y-6 animate-fade-in">
-                    <div class="p-8 bg-emerald-50 rounded-[35px] border-4 border-emerald-500 text-center shadow-lg">
-                        <p class="text-[11px] font-black text-emerald-800 uppercase mb-2 tracking-widest italic">Sente conseillée (DA)</p>
-                        <h2 id="prixFinal" class="text-emerald-600 text-7xl font-black italic tracking-tighter">--</h2>
+                <div id="resultArea" class="hidden mt-8">
+                    <div class="p-6 bg-emerald-50 rounded-3xl border-4 border-emerald-500 text-center">
+                        <p class="text-[10px] font-black text-emerald-800 uppercase mb-1">Prix de vente / السومة</p>
+                        <h2 id="prixFinal" class="text-emerald-600 text-6xl font-black italic">-- DA</h2>
                     </div>
                 </div>
             </div>
 
-            <div class="bg-slate-900 rounded-[40px] p-10 text-white shadow-2xl border-2 border-amber-500 relative">
-                <h3 class="baraka-font text-4xl text-amber-500 mb-8 pb-4 border-b border-amber-500/20 text-center">قوانين المارجن 👑</h3>
-                <div class="space-y-8">
-                    <div class="flex items-start gap-4">
-                        <div class="w-10 h-10 bg-amber-500/10 rounded-full flex items-center justify-center text-amber-500 font-bold shrink-0 italic">01</div>
-                        <p class="text-sm opacity-80 leading-relaxed italic"><span class="text-amber-500 font-bold">Règle d'Or :</span> En Algérie, prévoyez toujours 25% de retours colis pour ne pas manger votre profit.</p>
+            <div class="bg-slate-900 rounded-[35px] p-8 text-white shadow-2xl border-2 border-amber-500">
+                <h3 class="baraka-font text-3xl text-amber-500 mb-6">قوانين التجارة 👑</h3>
+                <div class="space-y-6 text-[12px]">
+                    <div class="border-b border-amber-500/20 pb-4">
+                        <p class="text-amber-500 font-bold mb-1 italic">Marge de Sécurité</p>
+                        <p class="opacity-70 italic text-[11px]">Le retour peut atteindre 25%. Ne négligez pas votre marge !</p>
                     </div>
-                    <div class="flex items-start gap-4">
-                        <div class="w-10 h-10 bg-amber-500/10 rounded-full flex items-center justify-center text-amber-500 font-bold shrink-0 italic">02</div>
-                        <p class="text-sm opacity-80 leading-relaxed italic"><span class="text-amber-500 font-bold">Prix Psy :</span> Finissez toujours vos prix par <span class="text-amber-500 underline">950 DA</span> ou <span class="text-amber-500 underline">00 DA</span>.</p>
+                    <div class="border-b border-amber-500/20 pb-4">
+                        <p class="text-amber-500 font-bold mb-1 italic">Prix Psychologique</p>
+                        <p class="opacity-70 italic text-[11px]">Les prix en 00 ou 50 (ex: 2950 DA) vendent mieux.</p>
                     </div>
                 </div>
-                <div class="mt-20 text-center opacity-30 text-[9px] uppercase font-black tracking-widest">Powered by Air Sea Travel Agency</div>
             </div>
         </div>
     </div>
 
     <script>
-        // --- BASE DE DONNÉES DES CLIENTS (C'est ici que tu gères tes ventes) ---
+        // --- GESTION DES CLIENTS ---
         const USERS = [
-            { email: "amine@dz.com", pass: "AMINE2026", name: "Amine" },
-            { email: "sarah@boutique.dz", pass: "SARAH16", name: "Sarah" },
-            { email: "test@test.com", pass: "1234", name: "Vendeur Test" }
+            { email: "amine@dz.com", pass: "AMINE2026" },
+            { email: "vendeur@elite.dz", pass: "ELITE77" },
+            { email: "test@test.com", pass: "1234" }
         ];
 
         function checkAccess() {
             const email = document.getElementById('userEmail').value.toLowerCase().trim();
             const pass = document.getElementById('userPass').value;
             const error = document.getElementById('errorMsg');
-            const loginCard = document.getElementById('loginScreen');
+            const login = document.getElementById('loginScreen');
 
-            // Vérification dans la liste des clients
             const user = USERS.find(u => u.email === email && u.pass === pass);
 
             if (user) {
-                loginCard.classList.add('hidden');
+                login.classList.add('hidden');
                 document.getElementById('mainApp').classList.remove('hidden-content');
                 document.getElementById('mainBody').classList.remove('items-center', 'justify-center');
-                document.getElementById('welcomeUser').innerText = "Dashboard Elite : " + user.name;
                 confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 }, colors: ['#d4af37', '#0f172a'] });
             } else {
                 error.classList.remove('hidden');
-                loginCard.classList.add('shake');
-                setTimeout(() => loginCard.classList.remove('shake'), 500);
+                login.classList.add('shake');
+                setTimeout(() => login.classList.remove('shake'), 500);
             }
         }
 
@@ -136,7 +122,6 @@
 
             if(achat <= 0) return;
 
-            // Logique de marge dynamique
             let marge = achat < 1500 ? 950 : (achat < 5000 ? achat * 0.40 : Math.max(2000, achat * 0.25));
             const totalCosts = achat + ads + emb;
             const finalPrice = Math.ceil((totalCosts + marge) / 50) * 50;
