@@ -3,128 +3,191 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pricing Elite Strategy | Accès</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Reem+Kufi:wght@400;700&display=swap" rel="stylesheet">
+    <title>CalculPrixDz | Pro Dashboard Pure</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Noto+Sans+Arabic:wght@400;700&family=Reem+Kufi:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <style>
-        :root { --primary: #0f172a; --accent: #d4af37; }
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #f8fafc; }
-        .login-card { background: white; border-radius: 30px; box-shadow: 0 20px 50px rgba(0,0,0,0.1); border: 2px solid var(--accent); }
-        .hidden-content { display: none; }
-        .baraka-font { font-family: 'Reem Kufi', sans-serif; }
+        :root { --primary: #0f172a; --accent: #d4af37; --success: #059669; }
+        body { font-family: 'Plus Jakarta Sans', 'Noto Sans Arabic', sans-serif; background: #f8fafc; color: var(--primary); }
+        
+        /* STYLE ECRAN CONNEXION */
+        #loginScreen { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: #f8fafc; padding: 20px; }
+        .login-card { background: white; border-radius: 30px; box-shadow: 0 20px 50px rgba(0,0,0,0.1); border: 2px solid var(--accent); width: 100%; max-width: 400px; padding: 40px; text-align: center; }
         .shake { animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both; }
         @keyframes shake { 10%, 90% { transform: translate3d(-1px, 0, 0); } 20%, 80% { transform: translate3d(2px, 0, 0); } 30%, 50%, 70% { transform: translate3d(-4px, 0, 0); } 40%, 60% { transform: translate3d(4px, 0, 0); } }
-        .info-pop { font-size: 10px; cursor: help; border: 1px solid #ccc; border-radius: 50%; width: 14px; height: 14px; display: inline-flex; items-center; justify-content: center; margin-left: 5px; opacity: 0.6; }
+        
+        /* TON STYLE ORIGINAL */
+        .hidden-app { display: none; }
+        .header-premium { background: var(--primary); border-radius: 0 0 40px 40px; padding: 40px 20px; text-align: center; color: white; border-bottom: 4px solid var(--accent); }
+        .main-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 25px; max-width: 1100px; margin: auto; padding: 0 20px; }
+        @media (max-width: 900px) { .main-grid { grid-template-columns: 1fr; } }
+        .glass-card { background: white; border-radius: 30px; box-shadow: 0 15px 35px rgba(0,0,0,0.05); padding: 30px; }
+        .input-group { background: #f1f5f9; border: 2px solid transparent; border-radius: 15px; padding: 12px 16px; transition: 0.3s; display: flex; align-items: center; }
+        .input-group:focus-within { border-color: var(--accent); background: white; }
+        input { background: transparent; border: none; outline: none; width: 100%; font-weight: 700; color: var(--primary); font-size: 1.1rem; }
+        .info-i { width: 18px; height: 18px; border: 1.5px solid var(--accent); color: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 900; cursor: pointer; margin-right: 8px; flex-shrink: 0; }
+        .sidebar-rules { background: var(--primary); color: white; border-radius: 30px; padding: 30px; border: 2px solid var(--accent); height: fit-content; position: sticky; top: 20px; }
+        .rule-item { margin-bottom: 25px; border-bottom: 1px solid rgba(212, 175, 55, 0.15); padding-bottom: 15px; }
+        .rule-item:last-child { border-bottom: none; }
+        .rule-title { font-family: 'Reem Kufi', sans-serif; color: var(--accent); font-size: 1.2rem; margin-bottom: 8px; }
+        .rule-desc { font-size: 0.8rem; color: #cbd5e1; line-height: 1.6; }
+        .alert-livraison { background: #fffbeb; border: 2px dashed #f59e0b; color: #92400e; padding: 12px; border-radius: 15px; text-align: center; font-size: 11px; font-weight: 800; margin-bottom: 20px; animation: pulse 2s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.8; } }
+        .baraka-font { font-family: 'Reem Kufi', sans-serif; }
     </style>
 </head>
-<body class="bg-slate-50 min-h-screen flex items-center justify-center p-4" id="mainBody">
+<body>
 
-    <div id="loginScreen" class="w-full max-w-md login-card p-10 text-center">
-        <div class="mb-8">
-            <h1 class="baraka-font text-4xl text-slate-900 mb-2">Espace Premium</h1>
-            <p class="text-[10px] font-black uppercase text-amber-600 tracking-widest">Pricing Elite Strategy 👑</p>
+    <div id="loginScreen">
+        <div class="login-card">
+            <h1 class="baraka-font text-3xl mb-2">Espace Premium</h1>
+            <p class="text-[10px] font-black uppercase text-amber-600 tracking-widest mb-8 text-center">Elite Pricing Strategy 👑</p>
+            
+            <div class="space-y-4 text-left">
+                <input type="email" id="userEmail" placeholder="Email" class="w-full p-4 rounded-xl bg-slate-100 border-2 border-transparent focus:border-amber-500 outline-none font-bold">
+                <input type="password" id="userPass" placeholder="Mot de passe" class="w-full p-4 rounded-xl bg-slate-100 border-2 border-transparent focus:border-amber-500 outline-none font-bold">
+                <button onclick="checkAccess()" class="w-full py-4 bg-slate-900 text-white rounded-xl font-black shadow-lg hover:bg-slate-800 transition-all border-b-4 border-amber-600 uppercase text-xs">Accéder au Dashboard 🚀</button>
+            </div>
+            <p id="errorMsg" class="mt-4 text-red-500 text-[10px] font-bold hidden">IDENTIFIANTS INCORRECTS</p>
         </div>
-        
-        <div class="space-y-4">
-            <input type="email" id="userEmail" placeholder="Votre Email" class="w-full p-4 rounded-2xl bg-slate-100 border-2 border-transparent focus:border-amber-500 outline-none font-bold text-slate-700">
-            <input type="password" id="userPass" placeholder="Mot de passe" class="w-full p-4 rounded-2xl bg-slate-100 border-2 border-transparent focus:border-amber-500 outline-none font-bold text-slate-700">
-            <button onclick="checkAccess()" class="w-full py-4 bg-slate-900 text-white rounded-2xl font-black shadow-lg hover:bg-slate-800 transition-all border-b-4 border-amber-600 uppercase text-xs">SE CONNECTER / الدخول 🚀</button>
-        </div>
-        <p id="errorMsg" class="mt-4 text-red-500 text-[10px] font-bold hidden uppercase italic">Accès refusé. Vérifiez vos codes.</p>
     </div>
 
-    <div id="mainApp" class="hidden-content w-full max-w-5xl mx-auto py-10 px-4">
-        <header class="bg-slate-900 rounded-[40px] p-10 text-center text-white border-b-4 border-amber-500 shadow-2xl mb-10">
+    <div id="mainApp" class="hidden-app">
+        <header class="header-premium mb-10 shadow-xl">
             <h2 class="baraka-font text-5xl mb-1">مرحبا بك يا التاجر</h2>
-            <p class="text-[10px] font-bold opacity-60 uppercase tracking-[3px]">Expertise en Pricing Algérie</p>
+            <p class="text-[10px] font-bold opacity-60 uppercase tracking-[3px]">Expertise en Pricing Algérie / خبير في تحديد الأسعار</p>
         </header>
 
-        <div class="grid md:grid-cols-2 gap-8">
-            <div class="bg-white rounded-[35px] shadow-xl p-8 border border-slate-100">
-                <div class="space-y-6">
-                    <div>
-                        <label class="text-[10px] font-black uppercase text-slate-400 block mb-2">Prix d'achat / الشراء <span class="info-pop" title="Saisissez le prix d'achat fournisseur">i</span></label>
-                        <input type="number" id="prixAchat" placeholder="0 DA" class="w-full p-4 bg-slate-50 rounded-2xl border-2 border-transparent focus:border-amber-500 outline-none font-bold text-xl">
-                    </div>
-                    <div class="grid grid-cols-2 gap-4">
+        <main class="main-grid">
+            <div class="space-y-6">
+                <div class="glass-card">
+                    <div class="space-y-6">
                         <div>
-                            <label class="text-[10px] font-black uppercase text-slate-400 block mb-2">Ads / فيسبوك <span class="info-pop" title="Coût de la pub par vente (CPA)">i</span></label>
-                            <input type="number" id="ads" placeholder="0" class="w-full p-4 bg-slate-50 rounded-2xl border-2 border-transparent focus:border-amber-500 outline-none font-bold">
+                            <div class="flex justify-between items-center mb-2 text-[10px] font-black uppercase text-slate-500 tracking-wider">
+                                <div class="flex items-center"><span class="info-i" onclick="alert('Prix unitaire payé au fournisseur.\nشحال خلصت الحبة عند القروسيست.')">i</span> Prix d'achat / الشراء</div>
+                            </div>
+                            <div class="input-group"><input type="number" id="prixAchat" placeholder="0 DA"></div>
                         </div>
-                        <div>
-                            <label class="text-[10px] font-black uppercase text-slate-400 block mb-2">Pack / تغليف <span class="info-pop" title="Sachet, carton et scotch">i</span></label>
-                            <input type="number" id="emb" placeholder="0" class="w-full p-4 bg-slate-50 rounded-2xl border-2 border-transparent focus:border-amber-500 outline-none font-bold">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <div class="flex justify-between items-center mb-2 text-[10px] font-black uppercase text-slate-500">
+                                    <div class="flex items-center"><span class="info-i" onclick="alert('Coût pub par vente (CPA).\nشحال صرفت فيسبوك باش تجيب هاد الكوموند.')">i</span> Ads / إشهار</div>
+                                </div>
+                                <div class="input-group"><input type="number" id="ads" placeholder="0"></div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between items-center mb-2 text-[10px] font-black uppercase text-slate-500">
+                                    <div class="flex items-center"><span class="info-i" onclick="alert('Sachets, cartons et main d’œuvre.\nحق الساشي، الكرطون، والمصاريف الصغيرة.')">i</span> Pack / تغليف</div>
+                                </div>
+                                <div class="input-group"><input type="number" id="emb" placeholder="0"></div>
+                            </div>
                         </div>
+                        <button onclick="analyserPrix()" class="w-full py-5 bg-slate-900 text-white font-black rounded-2xl border border-amber-500 shadow-lg hover:bg-slate-800 transition-all uppercase text-xs tracking-widest">
+                            Analyser le prix / أحسب السومة 🚀
+                        </button>
                     </div>
-                    <button onclick="analyserPrix()" class="w-full py-5 bg-slate-900 text-white font-black rounded-2xl shadow-lg border-b-4 border-amber-600 uppercase text-xs">Calculer / أحسب 🔥</button>
                 </div>
 
-                <div id="resultArea" class="hidden mt-8 space-y-4">
-                    <div class="p-6 bg-emerald-50 rounded-3xl border-4 border-emerald-500 text-center">
-                        <p class="text-[10px] font-black text-emerald-800 uppercase mb-1">Prix de vente / السومة</p>
-                        <h2 id="prixFinal" class="text-emerald-600 text-6xl font-black italic">-- DA</h2>
-                        <div class="mt-4 p-3 bg-white/50 rounded-xl border border-dashed border-emerald-200">
-                            <p class="text-[10px] text-emerald-900 font-bold uppercase italic">⚠️ Le prix ne contient pas la livraison / السعر لا يشمل التوصيل</p>
+                <div id="resultArea" class="hidden space-y-6">
+                    <div class="alert-livraison">
+                        ⚠️ HORS LIVRAISON / هاد السومة بلا توصيل <br>
+                        N'oubliez pas de rajouter vos frais de livraison ! / ما تنساش تزيد حق التوصيل !
+                    </div>
+                    <div class="bg-white rounded-[35px] border-4 border-emerald-500 p-8 text-center shadow-2xl relative overflow-hidden">
+                        <p class="text-[10px] font-black text-emerald-700 uppercase tracking-widest mb-2 italic">Prix de vente conseillé / السومة المليحة</p>
+                        <h2 id="prixFinal" class="text-emerald-600 text-7xl font-black mb-8 italic tracking-tighter">-- DA</h2>
+                        <div class="bg-emerald-50 p-5 rounded-2xl border border-emerald-100 text-left mb-6">
+                            <p class="text-[9px] text-emerald-800 font-black uppercase mb-2">💡 Conseil Expert / نصيحة :</p>
+                            <p id="conseilTexte" class="text-[12px] text-emerald-900 leading-relaxed font-bold italic"></p>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4 border-t border-emerald-100 pt-5 text-[11px] font-bold">
+                            <div class="text-left"><p class="text-slate-400 mb-1">Dépenses / صرفت</p><p id="coutTotal" class="text-slate-900 text-lg">-- DA</p></div>
+                            <div class="text-right"><p class="text-emerald-700 mb-1">Profit / فائدتك</p><p id="profit" class="text-2xl text-emerald-600 font-black">-- DA</p></div>
                         </div>
                     </div>
-                    <div class="text-center">
-                        <p class="baraka-font text-2xl text-slate-900 italic">ربي يباركلك 🤲</p>
+                    <div class="text-center py-6">
+                        <p class="baraka-font text-5xl text-slate-800">رَبِّي يُبَارِكْلَكْ</p>
                     </div>
                 </div>
             </div>
 
-            <div class="bg-slate-900 rounded-[35px] p-8 text-white shadow-2xl border-2 border-amber-500">
-                <h3 class="baraka-font text-3xl text-amber-500 mb-6">قوانين التجارة 👑</h3>
-                <div class="space-y-6 text-[12px]">
-                    <div class="border-b border-amber-500/20 pb-4">
-                        <p class="text-amber-500 font-bold mb-1 italic">Marge de Sécurité / هامش الربح</p>
-                        <p class="opacity-70 italic text-[11px]">Le retour peut atteindre 25%. Ne négligez pas votre marge ! / الروتور يلحق 25%، احذر !</p>
-                    </div>
-                    <div class="border-b border-amber-500/20 pb-4">
-                        <p class="text-amber-500 font-bold mb-1 italic">Prix Psychologique / السعر النفسي</p>
-                        <p class="opacity-70 italic text-[11px]">Les prix en 00 ou 50 (ex: 2950 DA) vendent mieux. / البيع يكون أفضل بالأسعار المنتهية بـ 00 أو 50.</p>
-                    </div>
+            <div class="sidebar-rules shadow-2xl">
+                <h3 class="baraka-font text-3xl text-white mb-6 border-b border-amber-500/30 pb-3">قوانين التجارة 👑</h3>
+                <div class="rule-item">
+                    <div class="rule-title">Marge de Sécurité / هامش الأمان</div>
+                    <p class="rule-desc italic">Le retour en Algérie peut atteindre 25%... <b>الروتور في الدزاير يقدر يوصل لـ 25%...</b></p>
                 </div>
+                <div class="rule-item">
+                    <div class="rule-title">Prix Psychologique / السعر النفسي</div>
+                    <p class="rule-desc italic">Les prix finissant par 00 ou 50... <b>الناس تحب الأرقام لي تخلاص بـ 00 ولا 50...</b></p>
+                </div>
+                <div class="rule-item">
+                    <div class="rule-title">Valeur Perçue / قيمة العلامة</div>
+                    <p class="rule-desc italic">Le client achète un bénéfice... <b>ما تبيعش السلعة، بيع الفايدة تاعها...</b></p>
+                </div>
+                <div class="mt-8 text-center opacity-40 text-[9px] uppercase tracking-widest text-white">Expert Pricing Dashboard</div>
             </div>
-        </div>
+        </main>
     </div>
 
     <script>
+        // --- SECURISE TES CLIENTS ICI ---
         const USERS = [
-            { email: "amine@dz.com", pass: "AMINE2026" },
+            { email: "amine@dz.com", pass: "AMIN2026" },
+            { email: "vendeur@elite.com", pass: "ELITE77" },
             { email: "test@test.com", pass: "1234" }
         ];
 
         function checkAccess() {
             const email = document.getElementById('userEmail').value.toLowerCase().trim();
             const pass = document.getElementById('userPass').value;
-            const error = document.getElementById('errorMsg');
-            const login = document.getElementById('loginScreen');
-
             const user = USERS.find(u => u.email === email && u.pass === pass);
+
             if (user) {
-                login.classList.add('hidden');
-                document.getElementById('mainApp').classList.remove('hidden-content');
-                document.getElementById('mainBody').classList.remove('items-center', 'justify-center');
-                confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 }, colors: ['#d4af37', '#0f172a'] });
+                document.getElementById('loginScreen').style.display = 'none';
+                document.getElementById('mainApp').classList.remove('hidden-app');
+                confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
             } else {
-                error.classList.remove('hidden');
-                login.classList.add('shake');
-                setTimeout(() => login.classList.remove('shake'), 500);
+                document.getElementById('errorMsg').classList.remove('hidden');
+                document.querySelector('.login-card').classList.add('shake');
+                setTimeout(() => document.querySelector('.login-card').classList.remove('shake'), 500);
             }
         }
 
+        // --- TES CALCULS ORIGINAUX (AUCUN CHANGEMENT) ---
         function analyserPrix() {
             const achat = parseFloat(document.getElementById('prixAchat').value) || 0;
             const ads = parseFloat(document.getElementById('ads').value) || 0;
             const emb = parseFloat(document.getElementById('emb').value) || 0;
-            if(achat <= 0) return;
-            let marge = achat < 1500 ? 950 : (achat < 5000 ? achat * 0.40 : Math.max(2000, achat * 0.25));
+
+            if(achat <= 0) { alert("Veuillez entrer un prix d'achat valide.\nتعيش دخل سومة الشراء صحيحة."); return; }
+
+            let marge = 0;
+            let conseil = "";
+
+            if (achat < 1500) {
+                marge = 950;
+                conseil = "Indispensable : Marge élevée pour compenser les retours sur petits produits. <br><b>لازم فائدة مليحة باش تعوض الروتور في السلعة الرخيصة.</b>";
+            } else if (achat >= 1500 && achat < 5000) {
+                marge = achat * 0.40;
+                conseil = "Équilibre parfait : Rentable et attractif pour le marché algérien. <br><b>هادي هي سومة الميزان، راك رابح و الكليون تجيه السومة معقولة.</b>";
+            } else {
+                marge = Math.max(2000, achat * 0.25);
+                conseil = "Produit Premium : Misez sur la qualité du service pour justifier ce prix. <br><b>سلعة غالية، ركز على الخدمة و الجودة، هاد الفائدة راهي كافية.</b>";
+            }
+
             const totalCosts = achat + ads + emb;
             const finalPrice = Math.ceil((totalCosts + marge) / 50) * 50;
+
             document.getElementById('resultArea').classList.remove('hidden');
             document.getElementById('prixFinal').innerText = finalPrice + " DA";
+            document.getElementById('coutTotal').innerText = totalCosts + " DA";
+            document.getElementById('profit').innerText = Math.round(marge) + " DA";
+            document.getElementById('conseilTexte').innerHTML = conseil;
+
+            confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 }, colors: ['#d4af37', '#ffffff', '#aa771c'] });
+            window.scrollTo({ top: document.getElementById('resultArea').offsetTop - 50, behavior: 'smooth' });
         }
     </script>
 </body>
